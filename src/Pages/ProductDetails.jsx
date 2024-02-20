@@ -3,7 +3,6 @@ import Snackbar from "@mui/material/Snackbar";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../Context/DataContext";
 import "./ProductDetails.css";
-import ReactImageMagnify from "react-image-magnify";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -68,18 +67,7 @@ function ProductDetails() {
         )}
       </div>
       <div className="product-image">
-        <ReactImageMagnify
-          smallImage={{
-            alt: "Wristwatch by Ted Baker London",
-            isFluidWidth: true,
-            src: product.image,
-          }}
-          largeImage={{
-            src: product.image,
-            width: 1200,
-            height: 1800,
-          }}
-        />
+        <img src={product.image} alt={product.title} />
       </div>
     </div>
   );
