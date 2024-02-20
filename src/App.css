@@ -1,0 +1,31 @@
+@media screen and (max-width: 920px) {
+  .header-content {
+    flex-direction: column-reverse;
+  }
+  .navigation-menu {
+    gap: 20%;
+  }
+  
+  .banner{
+    padding-left: 0px !important;
+    padding-top: 0px !important ;
+    
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .header-content {
+    padding: 0px 10px;
+    gap: 4rem;
+  }
+  .navigation-menu {
+    flex-wrap: wrap;
+    gap: 1rem !important;
+  }
+  .categories {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 0 20px;
+  }
+}

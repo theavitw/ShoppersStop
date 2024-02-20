@@ -1,0 +1,29 @@
+.product-details-container{
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+.product-image{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1;
+    margin: 0 auto; 
+}
+
+.product-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.product-details button{
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}

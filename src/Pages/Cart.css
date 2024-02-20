@@ -1,0 +1,35 @@
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease; /* Add transition for smoother animations */
+  }
+  
+  .cart-item:hover {
+    background-color: #f9f9f9; /* Change background color on hover */
+  }
+  
+  .cart-item-image {
+    width: 100px;
+    margin-right: 20px;
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: all 0.3s ease; /* Add transition for smoother animations */
+  }
+  
+  .cart-item:hover .cart-item-image {
+    transform: scale(1.05); /* Scale up image on hover */
+  }
+  
+  .cart-item-content {
+    flex: 1;
+  }
+  
+  .cart-item-remove {
+    transition: all 0.3s ease; /* Add transition for smoother animations */
+  }
+  
+  .cart-item-remove:hover {
+    background-color: #ff5722; /* Change background color on hover */
+  }

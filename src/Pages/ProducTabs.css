@@ -1,0 +1,42 @@
+.css-1aquho2-MuiTabs-indicator{
+   display: none;
+
+}
+.css-heg063-MuiTabs-flexContainer{
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.product-overlay {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  background-color: #1E2832;
+  display: flex;
+  justify-content: space-between;
+  gap: 10% ;
+}
+.btk_1{
+  display: flex;
+  gap: 10px;
+  
+}
+.btk_2{
+  text-decoration: none;
+  color: #fff !important;
+  display: flex;
+  gap: 5px;
+  
+  
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+  color: black !important;
+}
+.tabs{
+  width: 100%;
+  margin-top: 20px;
+}
+.css-0{
+  display: contents;
+}

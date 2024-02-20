@@ -1,0 +1,70 @@
+/* Navbar CSS */
+.header-container {
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 20px;
+}
+.menu-text {
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+  font-size: 28px;
+}
+.logo {
+  display: flex;
+  
+}
+.navigation-menu {
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+  gap: 50%;
+  color: #000;
+}
+
+.divider {
+  background-color: #e3e3e3;
+  height: 2px;
+  margin-top: 15px;
+  width: 100%;
+} 
+
+.categories {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  color: #000;
+  align-self: center;
+  align-items: center;
+  padding: auto;
+}
+
+.category {
+  font-weight: bold;
+}
+.user-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
