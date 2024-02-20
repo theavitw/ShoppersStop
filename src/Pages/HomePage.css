@@ -18,6 +18,7 @@
 
 .collection-title {
   font: 300 54px Roboto, sans-serif;
+  margin-bottom: 2rem;
 }
 
 .collection-description {
@@ -30,17 +31,18 @@
 }
 .collection-cta {
   background-color: #1e2832;
-  display: flex;
   margin-top: 4rem;
   gap: 8px;
   font-size: 16px;
   font-weight: 600;
-  justify-content: center;
   color: #fff;
   white-space: nowrap;
   text-transform: capitalize;
-  line-height: 190%;
   padding: 21px 26px;
+}
+.collection-cta a {
+  display: flex;
+  gap: 5px;
 }
 
 .shop-icon {
@@ -118,12 +120,12 @@
 }
 
 .section-title {
-  color: #000;
-  text-align: center;
-  letter-spacing: 4.5px;
-  text-transform: capitalize;
-  margin-top: 97px;
-  font: 500 45px Roboto, sans-serif;
+  stroke: rgb(11, 11, 11);
+  stroke-width: 5;
+  color: rgb(11, 11, 11);
+  font-family: sans-serif;
+  font-weight: 800;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 2px 2px;
 }
 
 .product-display {

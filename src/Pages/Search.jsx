@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./Search.css"; // Import your CSS file for styling
 import { useProductContext } from "../Context/DataContext"; // Import the product context
-
+import { Link } from "react-router-dom";
 const SearchBar = () => {
   const { products } = useProductContext();
   const [isActive, setIsActive] = useState(false);
@@ -44,13 +44,7 @@ const SearchBar = () => {
     setSearchQuery(event.target.value);
   };
 
-  const handleItemClick = (id) => {
-    // Handle item click event
-    console.log(`Item ${id} clicked`);
-    setToogleItems(false);
-    window.location.href = `/product/${id}`;
-    
-  };
+
 
   return (
     <div className="search-container">
@@ -86,15 +80,15 @@ const SearchBar = () => {
         <div className="search-results">
           {ToogleItems &&
             filteredProducts.map((product) => (
-              <div
-                key={product.id}
-                className="search-result-item"
-                onClick={() => handleItemClick(product.id)}
-              >
-                <img src={product.image} alt={product.title} />
-                <p>{product.title}</p>
-                <p>${product.price}</p>
-              </div>
+              <>
+                <Link to={`/product/${product.id}`} key={product.id} onClick={() => setToogleItems(false)} className="search-result-link">
+                  <div key={product.id} className="search-result-item">
+                    <img src={product.image} alt={product.title} />
+                    <p>{product.title}</p>
+                    <p>${product.price}</p>
+                  </div>
+                </Link>
+              </>
             ))}
         </div>
       )}

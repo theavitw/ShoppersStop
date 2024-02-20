@@ -56,7 +56,10 @@
   object-fit: cover;
   margin-right: 10px;
 }
-
+.search-result-link{
+  text-decoration: none;
+  color: #333;
+}
 .search-result-item p {
   margin: 0;
 }

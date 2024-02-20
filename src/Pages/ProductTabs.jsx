@@ -77,10 +77,6 @@ function ProductTabs() {
     setAnchorEl(null);
   };
 
-  const navigate = (url) => {
-    window.location.href = url;
-  };
-
   return (
     <Box id="products">
       <h1
@@ -113,13 +109,11 @@ function ProductTabs() {
             onClick={handleMenuOpen}
             variant="outlined"
             size="small"
-            
-          
             sx={{
               backgroundColor: "#1E2832",
               color: "#fff",
               borderColor: "#1E2832",
-              "&:hover": {backgroundColor: "#1E2832" }
+              "&:hover": { backgroundColor: "#1E2832" },
             }}
             startIcon={
               <svg
@@ -165,16 +159,17 @@ function ProductTabs() {
               onMouseLeave={() => HandlePop("")}
             >
               <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="300"
-                  image={product.image}
-                  alt={product.name}
-                  style={{ cursor: "pointer" }}
-                  backgroundColor="black"
-                  sx={{ objectFit: "contain" }}
-                  onClick={() => navigate(`/product/${product.id}`)}
-                />
+                <Link to={`/product/${product.id}`}>
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={product.image}
+                    alt={product.name}
+                    style={{ cursor: "pointer" }}
+                    backgroundColor="black"
+                    sx={{ objectFit: "contain" }}
+                  />
+                </Link>
                 {Hover && product.id - 1 === Hover - 1 && (
                   <CardContent className="product-overlay">
                     <div className="btk_1">
@@ -246,12 +241,14 @@ function ProductTabs() {
             <Typography variant="h6" component="div">
               {product.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {product.category}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Price: ${product.price}
-            </Typography>
+            <div className="d-flex justify-content-between mt-2">
+              <Typography variant="body2" color="text.secondary">
+                {product.category}
+              </Typography>
+              <Typography variant="body2" textAlign={"right"}>
+                Price: ${product.price}
+              </Typography>
+            </div>
           </Grid>
         ))}
       </Grid>

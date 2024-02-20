@@ -1,15 +1,18 @@
 .product-details-container{
     display: flex;
     flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     
 }
 .product-image{
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
+    width: 100%;
+    height: 80%;
+    object-fit:contain;
     object-position: center;
     aspect-ratio: 1;
-    margin: 0 auto; 
+    margin: 5% auto; 
 }
 
 .product-details{
@@ -17,13 +20,18 @@
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    gap: 10px;
 }
 
-.product-details button{
+.Login_Button{
+    
     background-color: #ff6f61;
     color: #fff;
     border: none;
     padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 50px;
+    font-weight: 600;
     border-radius: 5px;
 }

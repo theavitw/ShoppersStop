@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Snackbar from "@mui/material/Snackbar";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useProductContext } from "../Context/DataContext";
 import "./ProductDetails.css";
 
@@ -41,6 +41,9 @@ function ProductDetails() {
   return (
     <div className="product-details-container">
       <div className="product-details">
+        <div className="product-image">
+          <img src={product.image} alt={product.title} className="product-image"/>
+        </div>
         <h2>{product.title}</h2>
         <p>{product.description}</p>
         <p>Price: ${product.price}</p>
@@ -53,21 +56,21 @@ function ProductDetails() {
             min={1}
           />
         </label>
-        {
-          localStorage.getItem("token") ? <button onClick={handleAddToCart}>Add to Cart</button> : <button onClick={() => window.location = "/Login"}>Login to Buy this Product</button>
-        }
+        {localStorage.getItem("token") ? (
+          <Link onClick={handleAddToCart} className="Login_Button">Add to Cart</Link>
+        ) : (
+          <Link to="/login" className="Login_Button">
+            Login to Buy this Product
+          </Link>
+        )}
         {open && (
           <Snackbar
             open={open}
             autoHideDuration={3000}
             onClose={() => setOpen(false)}
             message="Added To Cart"
-            
           />
         )}
-      </div>
-      <div className="product-image">
-        <img src={product.image} alt={product.title} />
       </div>
     </div>
   );

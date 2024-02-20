@@ -1,6 +1,13 @@
 import "./Footer.css";
 import img from "../assets/icons_payment 1.png";
 const CoralHomePage = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <main className="content-wrapper">
@@ -60,7 +67,13 @@ const CoralHomePage = () => {
             <li>About Us</li>
             <li>Contact</li>
             <li>Products</li>
-            <li style={{ cursor: "pointer" , display : "flex" , alignItems : "flex-start"}}>
+            <li
+              style={{
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "flex-start",
+              }}
+            >
               <svg
                 width="16"
                 height="16"
@@ -146,10 +159,11 @@ const CoralHomePage = () => {
         </div>
       </main>
       <footer className="site-footer">
-        <div className="footer-bottom">
-          <p>© 2022 Coral, Inc.</p>
-          <img src={img} alt="payment" />
-          <div className="back-to-top">Scroll To Top ⬆</div>
+        <p>© 2022 Coral, Inc.</p>
+        <img src={img} alt="payment" />
+
+        <div className="back-to-top" onClick={scrollToTop}>
+          Scroll To Top ⬆
         </div>
       </footer>
     </>
