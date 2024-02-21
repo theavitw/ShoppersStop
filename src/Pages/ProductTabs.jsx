@@ -105,6 +105,10 @@ function ProductTabs() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          variant="scrollable"
+          scrollButtons
+          allowScrollButtonsMobile
+
         >
           <Tab label="All" />
           {categories.map((category, index) => (
