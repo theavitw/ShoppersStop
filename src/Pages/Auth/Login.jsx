@@ -14,7 +14,7 @@ function Login() {
       return;
     }
 
-    let isPasswordValid = bcrypt.compareSync(password, userData.password); // true
+    let isPasswordValid = bcrypt.compareSync(password, userData.password);
     console.log(password, userData.password, isPasswordValid);
     if (userData && isPasswordValid) {
       const token = Math.random().toString(36).substr(2);

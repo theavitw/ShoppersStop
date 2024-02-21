@@ -1,4 +1,4 @@
-import  { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 
 const ProductContext = createContext();
 
@@ -11,7 +11,7 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
       setProducts(data);
     }
@@ -19,15 +19,19 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    if (product["quantity"] > 0) {
+      setCart([...cart, product]);
+    }
+    
   };
-
   const removeFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
+    setCart(cart.filter((item) => item.id !== productId));
   };
 
   return (
-    <ProductContext.Provider value={{ products, cart, addToCart, removeFromCart }}>
+    <ProductContext.Provider
+      value={{ products, cart, addToCart, removeFromCart }}
+    >
       {children}
     </ProductContext.Provider>
   );

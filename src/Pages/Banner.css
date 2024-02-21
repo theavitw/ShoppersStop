@@ -1,5 +1,4 @@
-
-.banner{
+.banner {
   background-image: url("../assets/background.png");
   background-size: cover;
   background-position: center;
@@ -11,16 +10,13 @@
   flex-direction: column;
   justify-content: center;
   padding-left: 400px;
-  
-  
 }
 
-.banner h1  {
+.banner h1 {
   font-weight: 900;
   font-size: 3rem;
   margin: 0;
   color: white;
-
 }
 .banner p {
   font-weight: 300;
@@ -29,7 +25,7 @@
   color: white;
 }
 
-.banner_button{
+.banner_button {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   border: none;
@@ -41,12 +37,8 @@
   width: 50%;
 }
 
-.banner_container{
+.banner_container {
   gap: 10px;
   display: flex;
   flex-direction: column;
-  
-  
-  
-  
 }

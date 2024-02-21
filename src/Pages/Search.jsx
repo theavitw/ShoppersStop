@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import "./Search.css"; // Import your CSS file for styling
-import { useProductContext } from "../Context/DataContext"; // Import the product context
+import "./Search.css";
+import { useProductContext } from "../Context/DataContext";
 import { Link } from "react-router-dom";
 const SearchBar = () => {
   const { products } = useProductContext();

@@ -28,7 +28,7 @@ function Login() {
       if (localStorage.getItem(email)) {
         setSuccessMessage("User already exists");
       } else {
-        const userData = { name, email, password: hashedPassword }; // Store hashed password
+        const userData = { name, email, password: hashedPassword };
         localStorage.setItem(email, JSON.stringify(userData));
         setSuccessMessage("Signup successful Back to Login");
       }

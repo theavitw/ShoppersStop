@@ -1,53 +1,47 @@
-section ul li{
+section ul li {
   cursor: pointer;
   margin: 10px;
   list-style: none;
 }
-.content-wrapper{
+.content-wrapper {
   display: grid;
   grid-template-columns: 0.5fr 1.2fr;
   margin: 60px 20px;
-  
-
 }
 
-.links{
+.links {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 20px;
   list-style: none;
-
 }
 
 @media screen and (max-width: 920px) {
-  .links{
+  .links {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 0px 20px;
     margin-top: 20px;
-  
   }
-  .content-wrapper{
+  .content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 0px 20px;
     margin-top: 20px;
-  
   }
-  
 }
 
 .site-footer {
   display: flex;
   background-color: #333;
   color: #fff;
-  padding: 40px 20px;  
+  padding: 40px 20px;
   width: 100%;
   flex-wrap: wrap;
 }
 
-section ul{
+section ul {
   padding: 0px;
 }

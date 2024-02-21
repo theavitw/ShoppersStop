@@ -26,8 +26,8 @@ function ProductTabs() {
   const [Hover, setHover] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [displayedProducts, setDisplayedProducts] = useState(6); // Number of products initially displayed
-  const productsPerPage = 6; // Number of products to load per page
+  const [displayedProducts, setDisplayedProducts] = useState(6);
+  const productsPerPage = 6; 
   const HandlePop = (id) => {
     setHover(id);
   };
@@ -66,7 +66,7 @@ function ProductTabs() {
 
   const handleResetFilters = () => {
     setFilteredProducts(products);
-    setAnchorEl(null); // Close the menu after resetting filters
+    setAnchorEl(null);
   };
 
   const handleMenuOpen = (event) => {

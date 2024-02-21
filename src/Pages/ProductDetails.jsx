@@ -8,7 +8,7 @@ function ProductDetails() {
   const { id } = useParams();
   const { products, addToCart } = useProductContext();
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(0);
   const [open, setOpen] = useState(false);
 
   const handleAddToCart = useCallback(() => {
@@ -29,14 +29,13 @@ function ProductDetails() {
 
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 0) {
+    if (!isNaN(value) && value > 0) {
       setQuantity(value);
     }
 
     if (value <= 0) {
       alert("Quantity cannot be negative or zero");
     }
-    
   };
 
   if (!product) {
@@ -47,21 +46,23 @@ function ProductDetails() {
     <div className="product-details-container">
       <div className="product-details">
         <div className="product-image">
-          <img src={product.image} alt={product.title} className="product-image"/>
+          <img
+            src={product.image}
+            alt={product.title}
+            className="product-image"
+          />
         </div>
         <h2>{product.title}</h2>
         <p>{product.description}</p>
         <p>Price: ${product.price}</p>
         <label>
           Quantity:
-          <input
-            type="text"
-            onBlur={handleQuantityChange}
-            
-          />
+          <input type="text" onBlur={handleQuantityChange} />
         </label>
         {localStorage.getItem("token") ? (
-          <Link onClick={handleAddToCart} className="Login_Button">Add to Cart</Link>
+          <Link onClick={handleAddToCart} className="Login_Button">
+            Add to Cart
+          </Link>
         ) : (
           <Link to="/login" className="Login_Button">
             Login to Buy this Product
