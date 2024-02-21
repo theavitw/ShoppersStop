@@ -12,9 +12,16 @@ function ProductDetails() {
   const [open, setOpen] = useState(false);
 
   const handleAddToCart = useCallback(() => {
-    if (product) {
+    if (product && quantity > 0) {
       setOpen(true);
       addToCart({ ...product, quantity });
+      let data = localStorage.getItem(`${window.sessionStorage.getItem("email")}`);
+      data = JSON.parse(data);
+      data.cart.push(product);
+      localStorage.setItem(
+        `${window.sessionStorage.getItem("email")}`,
+        JSON.stringify(data)
+      )
     }
   }, [addToCart, product, quantity]);
 

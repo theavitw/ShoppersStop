@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cart, removeFromCart } = useProductContext();
-
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const handleCheckout = () => {
     console.log("Checkout clicked!");

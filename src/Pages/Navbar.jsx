@@ -16,6 +16,7 @@ function Navbar() {
   });
   const HandleLogout = () => {
     localStorage.removeItem("token");
+    window.sessionStorage.removeItem("email");
     window.location = "/";
   };
   const isLogin = localStorage.getItem("token");

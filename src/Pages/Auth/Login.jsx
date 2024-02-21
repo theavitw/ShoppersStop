@@ -20,6 +20,7 @@ function Login() {
       const token = Math.random().toString(36).substr(2);
       localStorage.setItem("token", token);
       window.location = "/HomePage";
+      window.sessionStorage.setItem("email", email);
     } else {
       setErrorMessage("Invalid email or password");
 

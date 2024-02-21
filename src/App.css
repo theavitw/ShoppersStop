@@ -17,6 +17,9 @@
   .content-wrapper{
     text-align: center;
   }
+  .banner_img{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 620px) {

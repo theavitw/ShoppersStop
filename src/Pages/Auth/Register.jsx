@@ -9,6 +9,7 @@ function Login() {
   const [name, setName] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [open, setOpen] = useState(false);
+  
 
   const handleClose = () => {
     setOpen(false);
@@ -28,7 +29,7 @@ function Login() {
       if (localStorage.getItem(email)) {
         setSuccessMessage("User already exists");
       } else {
-        const userData = { name, email, password: hashedPassword };
+        const userData = { name, email, password: hashedPassword ,cart : [] };
         localStorage.setItem(email, JSON.stringify(userData));
         setSuccessMessage("Signup successful Back to Login");
       }

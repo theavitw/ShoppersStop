@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   padding-left: 400px;
+  z-index: -100;
 }
 
 .banner h1 {
@@ -41,4 +42,12 @@
   gap: 10px;
   display: flex;
   flex-direction: column;
+}
+.banner_img {
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  left: 55%;
+  top: -10%;
+  overflow: hidden;
 }

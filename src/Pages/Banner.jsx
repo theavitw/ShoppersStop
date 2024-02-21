@@ -6,7 +6,7 @@ function Banner() {
   return (
     <div className="banner">
       <Box className="banner_container" sx={{ width : "50%" , position : "relative"}}>
-        
+        <img src={img} alt="img" className="banner_img" />
         <h1>
           <img src={img2} alt="img2" />
         </h1>

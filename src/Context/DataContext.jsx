@@ -7,7 +7,17 @@ export const useProductContext = () => useContext(ProductContext);
 // eslint-disable-next-line react/prop-types
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+
   const [cart, setCart] = useState([]);
+  useEffect(() => {
+    let data = localStorage.getItem(
+      `${window.sessionStorage.getItem("email")}`
+    );
+    if (data) {
+      data = JSON.parse(data);
+      setCart(data.cart);
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -22,10 +32,18 @@ export const ProductProvider = ({ children }) => {
     if (product["quantity"] > 0) {
       setCart([...cart, product]);
     }
-    
   };
   const removeFromCart = (productId) => {
     setCart(cart.filter((item) => item.id !== productId));
+    let data = localStorage.getItem(
+      `${window.sessionStorage.getItem("email")}`
+    );
+    data = JSON.parse(data);
+    data.cart = data.cart.filter((item) => item.id !== productId);
+    localStorage.setItem(
+      `${window.sessionStorage.getItem("email")}`,
+      JSON.stringify(data)
+    );
   };
 
   return (
