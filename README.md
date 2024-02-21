@@ -1,6 +1,7 @@
-# React Vite E-Commerce Project
+# React Vite E-Commerce Website
 
 Welcome to My exciting React Vite E-Commerce Project! Dive into a seamless shopping experience with cutting-edge features and a sleek UI/UX design.
+This represents mt proefficiency in react and creating software applications.
 
 ## Configurations
 
