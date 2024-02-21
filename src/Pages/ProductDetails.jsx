@@ -8,7 +8,7 @@ function ProductDetails() {
   const { id } = useParams();
   const { products, addToCart } = useProductContext();
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleAddToCart = useCallback(() => {
@@ -29,9 +29,14 @@ function ProductDetails() {
 
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 1) {
+    if (!isNaN(value) && value >= 0) {
       setQuantity(value);
     }
+
+    if (value <= 0) {
+      alert("Quantity cannot be negative or zero");
+    }
+    
   };
 
   if (!product) {
@@ -50,10 +55,9 @@ function ProductDetails() {
         <label>
           Quantity:
           <input
-            type="number"
-            value={quantity}
-            onChange={handleQuantityChange}
-            min={1}
+            type="text"
+            onBlur={handleQuantityChange}
+            
           />
         </label>
         {localStorage.getItem("token") ? (

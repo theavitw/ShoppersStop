@@ -78,7 +78,7 @@ function Login() {
             </div>
             <div>
               <a href="/register">
-                <button className="btn btn-primary mt-3" type="submit">
+                <button className="btn mt-3" type="submit">
                   Sign In
                 </button>
               </a>

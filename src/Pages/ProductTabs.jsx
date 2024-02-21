@@ -22,11 +22,12 @@ function ProductTabs() {
   const { products } = useProductContext();
   const [value, setValue] = useState(0);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [filterPrice, setFilterPrice] = useState("");
   const [categories, setCategories] = useState([]);
   const [Hover, setHover] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [displayedProducts, setDisplayedProducts] = useState(6); // Number of products initially displayed
+  const productsPerPage = 6; // Number of products to load per page
   const HandlePop = (id) => {
     setHover(id);
   };
@@ -59,7 +60,6 @@ function ProductTabs() {
   };
 
   const handleFilterByPrice = (price) => {
-    setFilterPrice(price);
     const filtered = products.filter((product) => product.price < price);
     setFilteredProducts(filtered);
   };
@@ -75,6 +75,14 @@ function ProductTabs() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const loadMore = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setDisplayedProducts((prev) => prev + productsPerPage);
+      setIsLoading(false);
+    }, 2000);
   };
 
   return (
@@ -97,9 +105,6 @@ function ProductTabs() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
-          className="tabs"
-          variant="scrollable"
-          scrollButtons="auto"
         >
           <Tab label="All" />
           {categories.map((category, index) => (
@@ -151,7 +156,7 @@ function ProductTabs() {
         </Tabs>
       </Grid>
       <Grid container spacing={3} padding={7}>
-        {filteredProducts.map((product, index) => (
+        {filteredProducts.slice(0, displayedProducts).map((product, index) => (
           <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
             <Card
               className="position-relative"
@@ -252,6 +257,12 @@ function ProductTabs() {
           </Grid>
         ))}
       </Grid>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && displayedProducts < filteredProducts.length && (
+        <Button onClick={loadMore} size="large" className="mb-3 btn ">
+          Load More
+        </Button>
+      )}
     </Box>
   );
 }

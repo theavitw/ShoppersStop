@@ -9,16 +9,15 @@ import {
   Box,
 } from "@mui/material";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cart, removeFromCart } = useProductContext();
 
-  
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const handleCheckout = () => {
     console.log("Checkout clicked!");
   };
-  
 
   return (
     <Container>
@@ -26,7 +25,13 @@ const CartPage = () => {
         Shopping Cart
       </Typography>
       {cart.length === 0 ? (
-        <Typography variant="body1">Your cart is empty.</Typography>
+        <>
+          <Typography variant="body1">Your cart is empty.</Typography>
+          <Button variant="contained" color="primary">
+            <Link to="/" style={{ color: "white" , textDecoration: "none"}}>Back to Home</Link>
+          </Button>
+          
+        </>
       ) : (
         <div>
           <List>
@@ -65,7 +70,6 @@ const CartPage = () => {
               Checkout
             </Button>
           </Box>
-          
         </div>
       )}
     </Container>

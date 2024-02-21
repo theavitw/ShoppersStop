@@ -103,11 +103,11 @@ function Navbar() {
                   />
                 </svg>
 
-                <Button className="login text-black">Login</Button>
+                <Button className="text-black">Login</Button>
               </NavLink>
 
               <NavLink to="/register">
-                <Button className="register text-black">Register</Button>{" "}
+                <Button className="text-black">Register</Button>
               </NavLink>
             </div>
           )}
@@ -134,11 +134,11 @@ function Navbar() {
                   />
                 </svg>
 
-                <Button className="cart">Cart</Button>
+                <Button className="text-black">Cart</Button>
               </NavLink>
 
-              <div className="logout">
-                <Button onClick={HandleLogout}>logout</Button>
+              <div>
+                <Button onClick={HandleLogout} className="text-black">logout</Button>
               </div>
             </div>
           )}
