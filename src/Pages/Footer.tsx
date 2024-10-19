@@ -160,7 +160,7 @@ const CoralHomePage = () => {
         </div>
       </main>
       <footer className="site-footer">
-        <p>© 2022 Coral, Inc.</p>
+        <p>© 2022 ShoppersStop, Inc.</p>
         <img src={img} alt="payment" />
 
         <div className="back-to-top" onClick={scrollToTop}>
