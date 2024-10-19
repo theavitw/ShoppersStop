@@ -54,7 +54,6 @@
 }
 
 .cta-text {
-  font-family: Roboto, sans-serif;
   flex-grow: 1;
 }
 
@@ -110,9 +109,7 @@
   stroke: #fff;
 }
 
-.filter-text {
-  font-family: Open Sans, sans-serif;
-}
+
 
 .new-products {
   margin-top: 30px;
@@ -123,7 +120,6 @@
   stroke: rgb(11, 11, 11);
   stroke-width: 5;
   color: rgb(11, 11, 11);
-  font-family: sans-serif;
   font-weight: 800;
   text-shadow: rgba(0, 0, 0, 0.25) 0px 2px 2px;
 }
@@ -187,7 +183,6 @@
 
 .sale-tag {
   position: relative;
-  font-family: Open Sans, sans-serif;
   background-color: #1e2832;
   margin-bottom: 233px;
   aspect-ratio: 2.88;
@@ -216,13 +211,11 @@
 
 .product-name-footer {
   color: #777;
-  font-family: Open Sans, sans-serif;
 }
 
 .product-price-footer {
   color: #000;
   text-align: right;
-  font-family: Open Sans, sans-serif;
   font-weight: 600;
 }
 
@@ -276,7 +269,6 @@
 }
 .hot-tag {
   position: relative;
-  font-family: Open Sans, sans-serif;
   background-color: #ff6f61;
   margin-bottom: 233px;
   aspect-ratio: 2.88;
@@ -311,7 +303,6 @@
 
 .product-type-footer {
   color: #777;
-  font-family: Open Sans, sans-serif;
   font-weight: 400;
   margin-top: 21px;
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import React from "react";
 import Box from "@mui/material/Box";
 import {
   Grid,
@@ -28,7 +29,7 @@ function ProductTabs() {
   const [isLoading, setIsLoading] = useState(false);
   const [displayedProducts, setDisplayedProducts] = useState(6);
   const productsPerPage = 6; 
-  const HandlePop = (id) => {
+  const HandlePop = (id : any) => {
     setHover(id);
   };
 
@@ -48,7 +49,7 @@ function ProductTabs() {
     filterProducts(newValue);
   };
 
-  const filterProducts = (category) => {
+  const filterProducts = (category : number) => {
     if (category === 0) {
       setFilteredProducts(products);
     } else {
@@ -59,7 +60,7 @@ function ProductTabs() {
     }
   };
 
-  const handleFilterByPrice = (price) => {
+  const handleFilterByPrice = (price : number) => {
     const filtered = products.filter((product) => product.price < price);
     setFilteredProducts(filtered);
   };
@@ -69,7 +70,7 @@ function ProductTabs() {
     setAnchorEl(null);
   };
 
-  const handleMenuOpen = (event) => {
+  const handleMenuOpen = (event : any) => {
     setAnchorEl(event.currentTarget);
   };
 

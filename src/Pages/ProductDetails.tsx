@@ -1,46 +1,65 @@
 import { useState, useEffect, useCallback } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import { Link, useParams } from "react-router-dom";
+
 import { useProductContext } from "../Context/DataContext";
 import "./ProductDetails.css";
+import Cookies from "js-cookie";
+import React from "react";
+
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+}
 
 function ProductDetails() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const { products, addToCart } = useProductContext();
-  const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const handleAddToCart = useCallback(() => {
-    if (product && quantity > 0) {
-      setOpen(true);
-      addToCart({ ...product, quantity });
-      let data = localStorage.getItem(`${window.sessionStorage.getItem("email")}`);
-      data = JSON.parse(data);
-      data.cart.push(product);
-      localStorage.setItem(
-        `${window.sessionStorage.getItem("email")}`,
-        JSON.stringify(data)
-      )
-    }
-  }, [addToCart, product, quantity]);
+  const handleAddToCart = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      if (product && quantity > 0) {
+        setOpen(true);
+
+        let data : any = localStorage.getItem(`${window.sessionStorage.getItem("email")}`);
+        if (data) {
+          data = JSON.parse(data);
+          data.cart.push({ ...product, quantity });
+          localStorage.setItem(
+            `${window.sessionStorage.getItem("email")}`,
+            JSON.stringify(data)
+          );
+        }
+        addToCart({
+          ...product, quantity,
+          category: ""
+        });
+      }
+    },
+    [product, quantity, addToCart]
+  );
 
   useEffect(() => {
     const foundProduct = products.find(
-      (product) => product.id === parseInt(id)
+      (product : any) => product.id === parseInt(id || "")
     );
     if (foundProduct) {
       setProduct(foundProduct);
     }
   }, [id, products]);
 
-  const handleQuantityChange = (e) => {
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
     if (!isNaN(value) && value > 0) {
       setQuantity(value);
-    }
-
-    if (value <= 0) {
+    } else if (value <= 0) {
       alert("Quantity cannot be negative or zero");
     }
   };
@@ -53,11 +72,7 @@ function ProductDetails() {
     <div className="product-details-container">
       <div className="product-details">
         <div className="product-image">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="product-image"
-          />
+          <img src={product.image} alt={product.title} className="product-image" />
         </div>
         <h2>{product.title}</h2>
         <p>{product.description}</p>
@@ -67,7 +82,7 @@ function ProductDetails() {
           <input type="text" onBlur={handleQuantityChange} />
         </label>
         {localStorage.getItem("token") ? (
-          <Link onClick={handleAddToCart} className="Login_Button">
+          <Link onClick={(e) => handleAddToCart(e)} className="Login_Button" to={""}>
             Add to Cart
           </Link>
         ) : (

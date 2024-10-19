@@ -2,16 +2,25 @@ import { useState, useEffect, useRef } from "react";
 import "./Search.css";
 import { useProductContext } from "../Context/DataContext";
 import { Link } from "react-router-dom";
-const SearchBar = () => {
+import React from "react";
+
+interface Product {
+  id: number;
+  title: string;
+  image: string;
+  price: number;
+}
+
+const SearchBar: React.FC = () => {
   const { products } = useProductContext();
-  const [isActive, setIsActive] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [ToogleItems, setToogleItems] = useState(false);
-  const searchContainerRef = useRef(null);
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [ToogleItems, setToogleItems] = useState<boolean>(false);
+  const searchContainerRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const filtered = products.filter((product) =>
+    const filtered = products.filter((product: Product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredProducts(filtered);
@@ -40,11 +49,9 @@ const SearchBar = () => {
     setToogleItems(false);
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
-
-
 
   return (
     <div className="search-container">
@@ -80,15 +87,18 @@ const SearchBar = () => {
         <div className="search-results">
           {ToogleItems &&
             filteredProducts.map((product) => (
-              <>
-                <Link to={`/product/${product.id}`} key={product.id} onClick={() => setToogleItems(false)} className="search-result-link">
-                  <div key={product.id} className="search-result-item">
-                    <img src={product.image} alt={product.title} />
-                    <p>{product.title}</p>
-                    <p>${product.price}</p>
-                  </div>
-                </Link>
-              </>
+              <Link
+                to={`/product/${product.id}`}
+                key={product.id}
+                onClick={() => setToogleItems(false)}
+                className="search-result-link"
+              >
+                <div className="search-result-item">
+                  <img src={product.image} alt={product.title} />
+                  <p>{product.title}</p>
+                  <p>${product.price}</p>
+                </div>
+              </Link>
             ))}
         </div>
       )}

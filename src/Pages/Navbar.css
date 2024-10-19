@@ -15,13 +15,12 @@
   padding: 0 20px;
 }
 .menu-text {
-  font-family: "Open Sans", sans-serif;
   color: #000;
   font-size: 28px;
 }
 .logo {
   display: flex;
-  
+  text-decoration: none;
 }
 .navigation-menu {
   flex-grow: 0;
@@ -29,7 +28,7 @@
   align-items: center;
 
   justify-content: center;
-  gap: 50%;
+  gap: 40%;
   color: #000;
 }
 
@@ -38,7 +37,7 @@
   height: 2px;
   margin-top: 15px;
   width: 100%;
-} 
+}
 
 .categories {
   display: flex;
@@ -54,6 +53,8 @@
 
 .category {
   font-weight: bold;
+  text-decoration: none;
+  color: #000;
 }
 .user-actions {
   display: flex;
@@ -67,4 +68,3 @@
   align-items: center;
   gap: 10px;
 }
-

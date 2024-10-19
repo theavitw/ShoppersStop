@@ -4,6 +4,7 @@ import Tabs from "./ProductTabs";
 import Banner from "./Banner";
 import img from "../assets/image-product.png";
 import Footer from "./Footer";
+import React from "react";
 function HomePage() {
   return (
     <div className="main-container">
@@ -14,7 +15,10 @@ function HomePage() {
             you can explore and shop many different collection from various
             brands here.
           </p>
-          <button className="collection-cta">
+          <button
+            className="collection-cta"
+            onClick={() => window.scrollTo({ top: 600, behavior: "smooth" })}
+          >
             <a>
               <svg
                 width="31"

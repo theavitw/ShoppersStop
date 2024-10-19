@@ -1,5 +1,8 @@
-*{
-  padding: 0;
+
+
+* {
+  padding: 0px;
   margin: auto;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
