@@ -3,6 +3,7 @@ import HomePage from "../HomePage";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Cart from "../Cart";
 import ProductDetails from "../ProductDetails";
+import OtpForm from "../Auth/OtpForm";
 import React from "react";
 
 function Routess() {
