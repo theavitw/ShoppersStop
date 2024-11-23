@@ -16,17 +16,6 @@ This represents mt proefficiency in react and creating software applications.
 - **User Validation**: We ensure user data integrity with robust validation processes.
 - **User Control**: Have complete control over your account settings and preferences.
 
-## Dependencies
-
-- **@emotion/react**: "^11.11.3"
-- **@emotion/styled**: "^11.11.0"
-- **@mui/material**: "^5.15.10"
-- **bcrypt**: "^5.1.1"
-- **bcryptjs**: "^2.4.3"
-- **react**: "^18.2.0"
-- **react-dom**: "^18.2.0"
-- **react-router-dom**: "^6.22.1"
-
 ## APIs Used
 
 - [Fake Store API](https://fakestoreapi.com/products)
