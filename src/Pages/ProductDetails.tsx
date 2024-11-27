@@ -21,6 +21,27 @@ function ProductDetails() {
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
+  const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
+
+  let data: any = localStorage.getItem(
+    `${window.sessionStorage.getItem("email")}`
+  );
+
+  useEffect(() => {
+    if (data) {
+      data = JSON.parse(data);
+      const foundProduct = data?.cart?.find(
+        (product: any) => product.id === parseInt(id || "")
+      );
+      console.log(foundProduct)
+      if (foundProduct) {
+        setQuantity(foundProduct.quantity);
+        setIsAddedToCart(true);
+      } else {
+        setIsAddedToCart(false);
+      }
+    }
+  }, [id, addToCart]);
 
   const handleAddToCart = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -28,18 +49,21 @@ function ProductDetails() {
       if (product && quantity > 0) {
         setOpen(true);
 
-        let data : any = localStorage.getItem(`${window.sessionStorage.getItem("email")}`);
+        let data: any = localStorage.getItem(
+          `${window.sessionStorage.getItem("email")}`
+        );
         if (data) {
           data = JSON.parse(data);
-          data.cart.push({ ...product, quantity });
+          data?.cart?.push({ ...product, quantity });
           localStorage.setItem(
             `${window.sessionStorage.getItem("email")}`,
             JSON.stringify(data)
           );
         }
         addToCart({
-          ...product, quantity,
-          category: ""
+          ...product,
+          quantity,
+          category: "",
         });
       }
     },
@@ -48,7 +72,7 @@ function ProductDetails() {
 
   useEffect(() => {
     const foundProduct = products.find(
-      (product : any) => product.id === parseInt(id || "")
+      (product: any) => product.id === parseInt(id || "")
     );
     if (foundProduct) {
       setProduct(foundProduct);
@@ -72,19 +96,35 @@ function ProductDetails() {
     <div className="product-details-container">
       <div className="product-details">
         <div className="product-image">
-          <img src={product.image} alt={product.title} className="product-image" />
+          <img
+            src={product.image}
+            alt={product.title}
+            className="product-image"
+          />
         </div>
         <h2>{product.title}</h2>
         <p>{product.description}</p>
         <p>Price: ${product.price}</p>
-        <label>
-          Quantity:
-          <input type="text" onBlur={handleQuantityChange} />
-        </label>
+        {!isAddedToCart && (
+          <label>
+            Quantity:
+            <input type="text" onBlur={handleQuantityChange} />
+          </label>
+        )}
         {localStorage.getItem("token") ? (
-          <Link onClick={(e) => handleAddToCart(e)} className="Login_Button" to={""}>
-            Add to Cart
-          </Link>
+          isAddedToCart ? (
+            <Link className="Login_Button" to="/cart">
+              Item Added To Cart
+            </Link>
+          ) : (
+            <Link
+              onClick={(e) => handleAddToCart(e)}
+              className="Login_Button"
+              to={""}
+            >
+              Add to Cart
+            </Link>
+          )
         ) : (
           <Link to="/login" className="Login_Button">
             Login to Buy this Product

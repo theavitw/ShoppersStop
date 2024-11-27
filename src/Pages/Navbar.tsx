@@ -34,7 +34,7 @@ const Navbar = () => {
       const email = localStorage.getItem("email");
       if (email) {
         let data = localStorage.getItem(email);
-        data = JSON.parse(data as string);
+        data = JSON.parse(data);
 
         // Sending the data to the backend
         await axios.post("http://localhost:8080/logout", {
@@ -54,7 +54,7 @@ const Navbar = () => {
   };
 
   const isLogin = Boolean(
-    localStorage.getItem(localStorage.getItem("email") as string)
+    localStorage.getItem(localStorage.getItem("email"))
   );
 
   return (

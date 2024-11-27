@@ -15,12 +15,12 @@ import React from "react";
 const CartPage = () => {
   const { removeFromCart } = useProductContext();
   const cartValue = localStorage.getItem(
-    localStorage.getItem("email") as string
+    localStorage.getItem("email") as any
   );
   const cart = cartValue
     ? JSON.parse(cartValue)?.cart
     : useProductContext().cart;
-  const total = cart.reduce(
+  const total = cart && cart.reduce(
     (acc: number, item: { price: number; quantity: number }) =>
       acc + item.price * item.quantity,
     0
@@ -35,7 +35,7 @@ const CartPage = () => {
       <Typography variant="h4" gutterBottom>
         Shopping Cart
       </Typography>
-      {cart.length === 0 ? (
+      {cart && cart.length === 0 ? (
         <>
           <Typography variant="body1">Your cart is empty.</Typography>
           <Button variant="contained" color="primary">
@@ -47,7 +47,7 @@ const CartPage = () => {
       ) : (
         <div>
           <List>
-            {cart.map(
+            {cart && cart.map(
               (item: {
                 id: number;
                 image: string;
@@ -77,7 +77,7 @@ const CartPage = () => {
             )}
           </List>
           <Typography variant="h6" gutterBottom align="right">
-            Total: ${total.toFixed(2)}
+            Total: ${total?.toFixed(2)}
           </Typography>
           <Box display="flex" justifyContent="flex-end">
             <Button

@@ -1,64 +1,21 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import React from "react";
 
-// Define types for Product and CartItem
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-}
+const ProductContext = createContext({});
 
-interface CartItem extends Product {
-  quantity: number;
-}
+export const useProductContext = () => useContext(ProductContext);
 
-// Define the shape of the context value
-interface ProductContextType {
-  products: Product[];
-  cart: CartItem[];
-  addToCart: (product: CartItem) => void;
-  removeFromCart: (productId: number) => void;
-}
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
 
-// Create the context
-const ProductContext = createContext<ProductContextType | undefined>(undefined);
-
-// Custom hook to use the ProductContext
-export const useProductContext = () => {
-  const context = useContext(ProductContext);
-  if (!context) {
-    throw new Error("useProductContext must be used within a ProductProvider");
-  }
-  return context;
-};
-
-// ProductProvider component
-interface ProductProviderProps {
-  children: ReactNode;
-}
-
-// eslint-disable-next-line react/prop-types
-export const ProductProvider: React.FC<ProductProviderProps> = ({
-  children,
-}) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<CartItem[]>([]);
-
+  const [cart, setCart] = useState([]) as any;
   useEffect(() => {
-    const data = localStorage.getItem(
+    let data = localStorage.getItem(
       `${window.sessionStorage.getItem("email")}`
-    );
+    ) as any;
     if (data) {
-      const parsedData = JSON.parse(data);
-      setCart(parsedData.cart);
+      data = JSON.parse(data);
+      setCart(data?.cart);
     }
   }, []);
 
@@ -71,25 +28,22 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
     fetchData();
   }, []);
 
-  const addToCart = (product: CartItem) => {
-    if (product.quantity > 0) {
-      setCart((prevCart) => [...prevCart, product]);
+  const addToCart = (product: any) => {
+    if (product["quantity"] > 0) {
+      setCart([...cart, product]);
     }
   };
-
   const removeFromCart = (productId: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-    const data = localStorage.getItem(`${localStorage.getItem("email")}`);
-    if (data) {
-      const parsedData = JSON.parse(data);
-      parsedData.cart = parsedData.cart.filter(
-        (item: CartItem) => item.id !== productId
-      );
-      localStorage.setItem(
-        `${localStorage.getItem("email")}`,
-        JSON.stringify(parsedData)
-      );
-    }
+    setCart(cart.filter((item: any) => item.id !== productId));
+    let data = localStorage.getItem(
+      `${window.sessionStorage.getItem("email")}`
+    ) as any;
+    data = JSON.parse(data || "{}");
+    data.cart = data.cart.filter((item: any) => item.id !== productId);
+    localStorage.setItem(
+      `${window.sessionStorage.getItem("email")}`,
+      JSON.stringify(data)
+    );
   };
 
   return (

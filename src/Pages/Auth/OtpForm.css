@@ -1,7 +1,13 @@
+.otpContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .otp-Form {
-  width: 230px;
-  height: 300px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(199, 199, 199);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,7 +105,8 @@
 .resendBtn {
   background-color: transparent;
   border: none;
-  color: rgb(127, 129, 255);
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
   cursor: pointer;
   font-size: 1.1em;
   font-weight: 700;
