@@ -101,6 +101,10 @@ input[type="submit"] {
     height: fit-content;
     align-content: center;
     align-items: center;
+    flex-direction: column;
+  }
+  .left{
+    position: relative;
   }
   .overlay {
     height: fit-content !important;
