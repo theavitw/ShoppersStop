@@ -40,7 +40,7 @@ const OtpForm = (email: { email: string }) => {
   const handleSubmitOtp = async () => {
     if (otp.length === 4) {
       try {
-        const res = await axios.post("http://localhost:8080/validate-otp", {
+        const res = await axios.post("https://shoptank-backend.onrender.com/validate-otp", {
           email: email.email,
           otp,
         });

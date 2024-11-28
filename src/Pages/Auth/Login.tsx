@@ -49,7 +49,7 @@ function Login(): JSX.Element {
     if (profile && profile.email) {
       const { name, email, id } = profile;
       axios
-        .post("http://localhost:8080/login", { name, email, id })
+        .post("https://shoptank-backend.onrender.com/login", { name, email, id })
         .then((res) => {
           console.log(res.data);
           if (res.status === 200 && res.data.user) {
@@ -75,7 +75,7 @@ function Login(): JSX.Element {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     const userData = await axios
-      .post("http://localhost:8080/login", {
+      .post("https://shoptank-backend.onrender.com/login", {
         email,
         password,
       })

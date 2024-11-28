@@ -46,7 +46,7 @@ function Register() {
       localStorage.setItem("profile", JSON.stringify(profile));
       const { name, email, id } = profile;
       axios
-        .post("http://localhost:8080/register", { name, email, id })
+        .post("https://shoptank-backend.onrender.com/register", { name, email, id })
         .then((res) => {
           console.log("google login success:", res.data);
           setSuccessMessage(res.data);
@@ -80,7 +80,7 @@ function Register() {
       const userData = { name, email, password, cart: [] };
 
       try {
-        const response = await fetch("http://localhost:8080/register", {
+        const response = await fetch("https://shoptank-backend.onrender.com/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

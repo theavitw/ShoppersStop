@@ -37,7 +37,7 @@ const Navbar = () => {
         data = JSON.parse(data);
 
         // Sending the data to the backend
-        await axios.post("http://localhost:8080/logout", {
+        await axios.post("https://shoptank-backend.onrender.com/logout", {
           email: data?.email,
           cart: data?.cart,
         });
