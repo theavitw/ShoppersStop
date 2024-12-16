@@ -51,7 +51,6 @@ function Login(): JSX.Element {
       axios
         .post("https://shoptank-backend.onrender.com/login", { name, email, id })
         .then((res) => {
-          console.log(res.data);
           if (res.status === 200 && res.data.user) {
             localStorage.setItem("profile", JSON.stringify(profile));
             const token = Math.random().toString(36).substr(2);

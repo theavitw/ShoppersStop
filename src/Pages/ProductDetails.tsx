@@ -17,7 +17,7 @@ interface Product {
 
 function ProductDetails() {
   const { id } = useParams<{ id: string }>();
-  const { products, addToCart } = useProductContext();
+  const { products } = useProductContext();
   const [product, setProduct] = useState<Product | null>(null);
   // const [quantity, setQuantity] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
@@ -41,34 +41,47 @@ function ProductDetails() {
         setIsAddedToCart(false);
       }
     }
-  }, [id, addToCart]);
+  }, []);
 
-  const handleAddToCart = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      if (product && count > 0) {
-        setOpen(true);
+  const handleAddToCart = useCallback(() => {
+    if (product && count >= 0) {
+      if (data) {
+        data = JSON.parse(data);
 
-        let data: any = localStorage.getItem(
-          `${window.sessionStorage.getItem("email")}`
-        );
-        if (data) {
-          data = JSON.parse(data);
-          data?.cart?.push({ ...product, quantity: count });
-          localStorage.setItem(
-            `${window.sessionStorage.getItem("email")}`,
-            JSON.stringify(data)
-          );
+        // Update cart logic
+        const updatedCart = data?.cart || [];
+        const filteredCart = updatedCart.filter(
+          (item: { id: number }) => item.id !== product.id
+        ); // Remove all items with the same ID
+
+        if (count > 0) {
+          filteredCart.push({ ...product, quantity: count }); // Add the product if count > 0
         }
-        addToCart({
-          ...product,
-          quantity: count,
-          category: "",
-        });
+
+        // Update local storage
+        data.cart = filteredCart;
+        localStorage.setItem(
+          `${window.sessionStorage.getItem("email")}`,
+          JSON.stringify(data)
+        );
       }
-    },
-    [product, count, addToCart]
-  );
+    }
+  }, [product, count]);
+
+  useEffect(() => {
+    handleAddToCart();
+  }, [count, handleAddToCart]);
+
+  const increment = (e) => {
+    if (count === 0) {
+      setOpen(true);
+    }
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const decrement = (e) => {
+    setCount((prevCount) => Math.max(prevCount - 1, 0)); // Prevent count from going below 0
+  };
 
   useEffect(() => {
     const foundProduct = products.find(
@@ -105,32 +118,21 @@ function ProductDetails() {
         <h2>{product.title}</h2>
         <p>{product.description}</p>
         <p>Price: ${product.price}</p>
-        {!isAddedToCart && (
-          <label>
-            <CartButton count={count} setCount={setCount} />
-          </label>
-        )}
+
         {localStorage.getItem("token") ? (
-          isAddedToCart ? (
-            <>
-              <CartButton count={count} setCount={setCount} />
-              <Link
-                onClick={(e) => handleAddToCart(e)}
-                className="Login_Button"
-                to={""}
-              >
-                Add to Cart
-              </Link>
-            </>
-          ) : (
-            <Link
-              onClick={(e) => handleAddToCart(e)}
-              className="Login_Button"
-              to={""}
+          <>
+            {/* Prevent default behavior to avoid reload */}
+            <div
+              className="cart-actions"
+              onClick={(e) => e.preventDefault()} // Prevent reload
             >
-              Add to Cart
-            </Link>
-          )
+              <CartButton
+                increment={increment}
+                decrement={decrement}
+                count={count}
+              />
+            </div>
+          </>
         ) : (
           <Link to="/login" className="Login_Button">
             Login to Buy this Product

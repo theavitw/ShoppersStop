@@ -1,30 +1,20 @@
 import React, { useState } from "react";
 import "./Counter.css";
+import { Button } from "@mui/material";
 
-const CartButton = ({ count, setCount }) => {
-  const increment = () => {
-    if (count === 0) {
-      setCount(1); // Set to 1 only when it's the first increment
-    } else {
-      setCount(count + 1);
-    }
-  };
-
-  const decrement = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
-  console.log(count, "count");
+const CartButton = ({ increment, decrement, count }) => {
   return (
     <div className="d-flex justify-center align-center">
       <div className="d-flex align-items-center">
         {count > 0 && (
-          <button onClick={decrement} className="CartBtn decrement">
-            -
+          <button
+            onClick={decrement}
+            className="CartBtn decrement text-decoration-none"
+          >
+              -
           </button>
         )}
-        <button className="CartBtn" onClick={increment}>
+        <button className="CartBtn text-decoration-none" onClick={increment}>
           <span className="IconContainer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +29,10 @@ const CartButton = ({ count, setCount }) => {
           {count > 0 ? <p>{count}</p> : <p className="text">Add to Cart</p>}
         </button>
         {count > 0 && (
-          <button onClick={increment} className="CartBtn increment">
+          <button
+            onClick={increment}
+            className="CartBtn increment text-decoration-none"
+          >
             +
           </button>
         )}
