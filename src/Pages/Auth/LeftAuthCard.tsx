@@ -7,7 +7,7 @@ const LeftAuthCard = (props: Props) => {
   return (
     <div className="left">
       <div className="overlay">
-        <h1>Welocome To ShoppersStop</h1>
+        <h1>Welocome To ShopTank</h1>
         <p className="text-white">
           Discover the ultimate shopping experience at ShopperStop! Trendy
           collections, unbeatable deals, and seamless shopping—everything you
