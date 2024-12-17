@@ -39,7 +39,7 @@ const CoralHomePage = () => {
                   strokeWidth="0.5"
                 />
               </svg>
-              <div className="menu-text">ShoppersStop</div>
+              <div className="menu-text">ShopTank</div>
               <svg
                 width="31"
                 height="15"
